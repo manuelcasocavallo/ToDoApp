@@ -17,7 +17,11 @@ struct ToDoFormView: View {
             Form {
                 VStack(alignment: .leading) {
                     TextField("ToDo", text: $formVM.name)
-                    Toggle("Completed", isOn: $formVM.completed)
+                    
+                    if formVM.updating {
+                        Toggle("Completed", isOn: $formVM.completed)
+                    }
+                    
                 }
             }
             .navigationBarItems(leading: cancelButton, trailing: updateSaveButton)
